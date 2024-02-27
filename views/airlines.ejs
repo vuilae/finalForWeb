@@ -16,7 +16,7 @@
         type="text"
         id="airlineName"
         name="airlineName"
-        placeholder="Ex: Turkish"
+        placeholder="Ex: Astana"
       />
       <button type="submit"><%= translation.airlineInfoButton %></button>
     </form>
@@ -25,9 +25,8 @@
       <% if (airlines !== null) { %> <% airlines.forEach(airline => { %>
       <div class="movie-container">
         <h2><%= airline.name %></h2>
-        <p class="movie-info">
-          IATA: <%= airline.iata %>, ICAO: <%= airline.icao %>
-        </p>
+        <p class="movie-info"><%= translation.iata %>: <%= airline.iata %></p>
+        <p class="movie-info"><%= translation.icao %>: <%= airline.icao %></p>
         <p class="movie-info">Fleet:</p>
         <ul class="fleet-list">
           <% for (let i = 0; i < Object.keys(airline.fleet).length; i += 3) { %>
@@ -55,6 +54,5 @@
       <% }); %> <% } %>
     </div>
     <div id="footer"><%- include('same/foot'); -%></div>
-
   </body>
 </html>

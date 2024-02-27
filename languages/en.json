@@ -54,5 +54,7 @@
   "tourVideo":"Video Link",
   "addTour": "Add Tour",
   "entityName": "Entity Name",
-  "entityType":"Entity Type"
+  "entityType":"Entity Type",
+  "iata":"International Air Transport Association",
+  "icao":"International Civil Aviation Organization"
 }
