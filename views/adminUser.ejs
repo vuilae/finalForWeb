@@ -43,7 +43,7 @@
               <td>
                 <form
                   method="POST"
-                  action="/admin/users/<%= user._id %>?_method=PUT?lang=<%= currentLanguage %>"
+                  action="/admin/users/<%= user._id %>?_method=PUT&lang=<%= currentLanguage %>"
                 >
                   <label for="username"><%= translation.username %>:</label>
                   <input
@@ -74,7 +74,7 @@
               <td>
                 <form
                   method="POST"
-                  action="/admin/users/<%= user._id %>?_method=DELETE?lang=<%= currentLanguage %>"
+                  action="/admin/users/<%= user._id %>?_method=DELETE&lang=<%= currentLanguage %>"
                 >
                   <button type="submit"><%= translation.delete %></button>
                 </form>

@@ -16,12 +16,12 @@
   "airlineInfo": "Авиакомпания Жайлы",
   "hotelButton": "Ақпарат алу",
   "hotelCity": "Қаланы енгізініз",
-  "hotelInfo": "Қонақ Үй немесе басқа Мекенжай жайлы",
+  "hotelInfo": "Қала, аэропорт, қонақ үй, т.б жайлы",
   "lat": "Ендік",
   "lon": "Бойлық",
   "hotelAddress": "Мекенжай",
   "hotelType": "Тип",
-  "hotelClass": "Класс",
+  "entityClass": "Класс",
   "moreDetailsButton": "Көбірек Ақпарат",
   "noAccount": "Аккаунтыңыз жоқ па?",
   "registerHere": "Осы жерде тіркеліңіз",
@@ -53,5 +53,9 @@
   "tourRating": "Рейтинг",
   "tourPerson": "Адамдар Саны",
   "tourVideo": "Видео Сілтеме",
-  "addTour": "Турды Қосу"
+  "addTour": "Турды Қосу",
+  "entityName": "Объект атауы",
+  "entityType":"Объект типі"
+
+
 }

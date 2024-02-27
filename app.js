@@ -14,7 +14,7 @@ const login = require("./routes/login");
 const admin = require("./routes/admin");
 const airlineRoutes = require("./routes/airlineRoutes");
 const booked = require("./routes/booked");
-const hotelRoutes = require("./routes/hotelRoutes");
+const hotelRoutes = require("./routes/destinationRoutes");
 const register = require("./routes/register");
 const changeLanguage = require("./routes/changeLanguage");
 
@@ -48,18 +48,6 @@ function loadTranslation(language) {
   return JSON.parse(translation);
 }
 
-// Define the lang middleware function
-const lang = (req, res, next) => {
-  console.log("heelo");
-  const language = (req.query && req.query.lang) || "en";
-  const translation = loadTranslation(language);
-  req.session.language = language;
-  res.locals.translation = translation;
-  res.locals.currentLanguage = language;
-  next();
-};
-
-// Define other middleware functions and route handlers here
 
 // Middleware function to authenticate user
 const authenticateUser = (req, res, next) => {
@@ -93,8 +81,15 @@ const authorizeAdmin = (req, res, next) => {
   next();
 };
 
-// Define route handlers and use middleware functions
-app.use(lang); // Use the lang middleware for all routes
+// Middleware function to choose language
+app.use((req, res, next) => {
+  const language = (req.query && req.query.lang) || "en";
+  const translation = loadTranslation(language);
+  req.session.language = language;
+  res.locals.translation = translation;
+  res.locals.currentLanguage = language;
+  next();
+});
 app.use((req, res, next) => {
   if (
     req.path === "/" ||

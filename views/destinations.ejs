@@ -14,36 +14,40 @@
         type="text"
         id="hotelName"
         name="hotelName"
-        placeholder="Ex: Berlin"
+        placeholder="Ex: New York"
       />
       <button type="submit"><%= translation.hotelButton %></button>
     </form>
     <div id="movieResultContainer">
-      <% if (hotels !== null) { %> 
-        <% hotels.forEach(hotel => { %>
-          <% const [lat, lon] = hotel.location.split(', ').map(parseFloat); %>
-          <div class="movie-container"
-               data-lat="<%= lat %>"
-               data-lon="<%= lon %>">
-            <h2><%= hotel.hierarchy %></h2>
-            <p class="movie-info">
-              <%= translation.entityName %>: <%= hotel.entityName %>
-            </p>
-            <p class="movie-info">
-              <%= translation.lat %>: <%= lat %>, <%= translation.lon %>: <%= lon %>
-            </p>
-            <p class="movie-info">
-              <%= translation.hotelType %>: <%= hotel.suggestItem %>
-            </p>
-            <p class="movie-info">
-              <%= translation.hotelAddress %>: <%= hotel.display_name %>
-            </p>
-            <div class="map-container" style="height: 300px"></div>
-            <hr />
-          </div>
-        <% }); %>
-      <% } %>
+      <% if (hotels !== null) { %> <% for (let i = hotels.length - 1; i >= 0;
+      i--) { %> <% const hotel = hotels[i]; %> <% const [lat, lon] =
+      hotel.location.split(', ').map(parseFloat); %>
+      <div class="movie-container" data-lat="<%= lat %>" data-lon="<%= lon %>">
+        <h2><%= hotel.hierarchy %></h2>
+        <p class="movie-info">
+          <%= translation.entityName %>: <%= hotel.entityName %>
+        </p>
+        <p class="movie-info">
+          <%= translation.lat %>: <%= lat %>, <%= translation.lon %>: <%= lon %>
+        </p>
+
+        <p class="movie-info">
+          <%= translation.hotelAddress %>: <%=
+          hotel.suggestItem.replace(/{strong}/g, '').replace(/{\/strong}/g, '')
+          %>
+        </p>
+        <p class="movie-info">
+          <%= translation.entityClass %>: <%= hotel.class %>
+        </p>
+        <p class="movie-info">
+          <%= translation.entityType %>: <%= hotel.entityType %>
+        </p>
+        <div class="map-container" style="height: 300px"></div>
+        <hr />
+      </div>
+      <% } %> <% } %>
     </div>
+
     <script>
       //This script is only for showing map, based on latitude and longitude
       function initMap(container) {
@@ -52,19 +56,19 @@
         console.log(typeof lat);
         console.log(lat);
         console.log("Longitude: " + lon);
-    
+
         const map = L.map(container.querySelector(".map-container")).setView(
           [lat, lon],
           15
         );
-    
+
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
           attribution: "&copy; OpenStreetMap contributors",
         }).addTo(map);
-    
+
         L.marker([lat, lon]).addTo(map);
       }
-    
+
       document.addEventListener("DOMContentLoaded", function () {
         const containers = document.querySelectorAll(".movie-container");
         containers.forEach((container) => {
@@ -73,8 +77,7 @@
       });
     </script>
     <% if (includeFooter) { %>
-      <div id="footer"><%- include('same/foot'); -%></div>
+    <div id="footer"><%- include('same/foot'); -%></div>
     <% } %>
-    
   </body>
 </html>

@@ -1,4 +1,3 @@
-/* Resetting default margin and padding */
 body,
 h1,
 h6,
@@ -12,7 +11,7 @@ body {
   background-image: url("/images/img-home.jpg");
   background-size: cover;
   background-position: center;
-  font-family: Arial, sans-serif; /* Change the font family as per your preference */
+  font-family: Arial, sans-serif; 
   margin: 0;
   padding: 0;
   display: flex;
@@ -26,66 +25,60 @@ body {
   margin: 0;
 }
 
-/* Styling content container */
 .content-container {
   background-color: rgba(0, 0, 0, 0.6);
   padding: 20px;
   position: absolute;
-  top: 50%; /* Position at 50% from the top */
-  left: 50%; /* Position at 50% from the left */
+  top: 50%; 
+  left: 50%; 
   transform: translate(
     -50%,
     -50%
-  ); /* Move back by 50% of its own width and height */
-  max-width: 80%; /* Adjust width as needed */
+  );
+  max-width: 80%; 
   border-radius: 10px;
   text-align: center;
-  color: #f8f8ff; /* Text color */
+  color: #f8f8ff;
 }
 
 .content-container button {
-  margin-top: 20px; /* Add space above the button */
+  margin-top: 20px; 
 }
 
-/* Styling main heading */
 h1 {
   font-size: 36px;
   margin-bottom: 20px;
 }
 
-/* Styling subheading */
 h6 {
   font-size: 18px;
   margin-bottom: 20px;
 }
 
-/* Styling login link */
 .login-link {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #679ad1; /* Blue color, change as per your preference */
-  color: #fff; /* White text */
+  background-color: #679ad1; 
+  color: #fff; 
   text-decoration: none;
   border-radius: 5px;
 }
 
-/* Styling login link on hover */
 .login-link:hover {
-  background-color: #7099c4; /* Darker shade of blue on hover */
+  background-color: #7099c4;
 }
 
-/* Footer */
 .footer {
-  background-color: #333; /* Footer background color */
-  color: #fff; /* Text color */
-  padding: 20px 0; /* Padding top and bottom */
+  background-color: #333; 
+  color: #fff;
+  padding: 20px 0; 
   position: fixed;
   bottom: 0;
   width: 100%;
 }
 
 .footer p {
-  margin-bottom: 0; /* Remove default bottom margin for paragraph */
+  margin-bottom: 0;
 }
 
 form {
@@ -144,10 +137,10 @@ form button:hover {
 }
 
 label {
-  display: block; /* Display as block-level elements */
-  margin-bottom: 8px; /* Add space between labels */
-  font-size: 16px; /* Adjust font size */
-  color: #f8f8ff; /* Set text color */
+  display: block;
+  margin-bottom: 8px; 
+  font-size: 16px;
+  color: #f8f8ff;
 }
 #hotelForm {
   text-align: center;
@@ -235,7 +228,7 @@ label {
 }
 
 .fleet-list li {
-  flex: 0 0 calc(33.33% - 20px); /* Each item takes 33.33% of the width with 20px spacing */
+  flex: 0 0 calc(33.33% - 20px); 
   margin-right: 20px;
-  margin-bottom: 10px; /* Added margin bottom for spacing */
+  margin-bottom: 10px; 
 }
