@@ -1,0 +1,73 @@
+<!-- myBookedTours.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Booked Tours</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .image-container {
+        display: flex; /* Use flex layout */
+        flex-wrap: nowrap; /* Prevent wrapping of images to next line */
+        justify-content: flex-start; /* Align images to the start of the container */
+      }
+
+      /* Optionally, you can add styling to the images */
+      .image-container img {
+        max-width: 100px;
+        max-height: 100px;
+        margin-right: 10px; /* Add spacing between images */
+      }
+    </style>
+    <%- include('same/head'); -%>
+  </head>
+  <body>
+    <%- include('same/nav'); -%>
+
+    <div class="container mt-5">
+
+      <% if (bookedTours.length === 0) { %>
+      <p>No tours booked yet.</p>
+      <% } else { %>
+      <div class="row">
+        <% bookedTours.forEach(function(tour) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="image-container">
+              <% tour.images.forEach(image => { %>
+              <img
+                src="/<%= image %>"
+                class="card-img-top"
+                alt="<%= tour.name %>"
+              />
+              <% }); %>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title"><%= tour.name %></h5>
+              <p class="card-text"><%= tour.description %></p>
+              <p class="card-text">Start Date: <%= tour.startDate %></p>
+              <p class="card-text">End Date: <%= tour.endDate %></p>
+              <p class="card-text">Price: <%= tour.price %> dollars</p>
+              <a class="newB" href="/tours/<%= tour._id %>?lang=<%= currentLanguage %>" class="btn btn-primary"
+                ><%= translation.moreDetailsButton %></a
+              >
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+      <% } %>
+    </div>
+    <%- include('same/foot') %>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

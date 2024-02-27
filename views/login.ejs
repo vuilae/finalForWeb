@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('same/head'); -%>
+  <body>
+    <%- include('same/nav'); -%>
+    <main>
+      <div class="container-fluid px-0 mt-5">
+        <form action="/login?lang=<%= currentLanguage %>" method="post">
+          <h1><%= translation.loginButton %></h1>
+          <% if (errorMessage) { %>
+          <p class="error-message"><%= errorMessage %></p>
+          <% } %>
+          <label for="password"><%= translation.username %>:</label>
+          <input type="text" id="username" name="username" />
+          <label for="password"><%= translation.password %>:</label>
+          <input type="password" id="password" name="password" required />
+          <button type="submit"><%= translation.loginButton %></button>
+          <p>
+            <%= translation.noAccount %>
+            <a href="/register?lang=<%= currentLanguage %>"
+              ><%= translation.registerHere %>!</a
+            >
+          </p>
+        </form>
+      </div>
+    </main>
+    <%- include('same/foot'); -%>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('same/head'); -%>
+    <link rel="stylesheet" href="/styles/tours.css" />
+    <style>
+      body {
+        background-image: url("/<%= tour.images[0] %>");
+        background-repeat: no-repeat;
+        background-size: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('same/nav'); -%>
+    <div class="container1">
+      <% for (let i = 1; i < tour.images.length; i++) { %>
+      <img src="/<%= tour.images[i] %>" alt="Image <%= i %>" />
+      <% } %>
+    </div>
+    <div class="container2 text-white p-4 rounded">
+      <h1><%= tour.name %></h1>
+      <p><%= tour.description %></p>
+      <p>Start Date: <%= tour.startDate %></p>
+      <p>End Date: <%= tour.endDate %></p>
+      <p>Number of Persons: <%= tour.numberOfPersons %></p>
+      <p>Price: <%= tour.price %> dollars</p>
+      <p>Rating: <%= tour.rating %> out of 5</p>
+      <% if (errorMessage) { %>
+      <p class="error-message" style="color: red"><%= errorMessage %></p>
+      <% } %>
+      <form action="/tours/booking/<%= tour._id %>?lang=<%= currentLanguage %>" method="POST">
+        <button id="wanttogo" class="btn btn-secondary ml-3"><%= translation.bookNow %></button>
+      </form>
+    </div>
+
+    <div class="video-container mt-4">
+      <iframe
+        width="520"
+        height="360"
+        src="<%= tour.videoLink %>"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+      integrity="sha384-+Pe3c4+bpQv8hvoQ1uJBltTqXZNI2wD+2q6DxKF4z3wW3tq5U/3Rn7ui4Gx81LkZ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

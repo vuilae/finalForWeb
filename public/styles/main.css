@@ -1,0 +1,241 @@
+/* Resetting default margin and padding */
+body,
+h1,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("/images/img-home.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif; /* Change the font family as per your preference */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Styling content container */
+.content-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  position: absolute;
+  top: 50%; /* Position at 50% from the top */
+  left: 50%; /* Position at 50% from the left */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Move back by 50% of its own width and height */
+  max-width: 80%; /* Adjust width as needed */
+  border-radius: 10px;
+  text-align: center;
+  color: #f8f8ff; /* Text color */
+}
+
+.content-container button {
+  margin-top: 20px; /* Add space above the button */
+}
+
+/* Styling main heading */
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Styling subheading */
+h6 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Styling login link */
+.login-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #679ad1; /* Blue color, change as per your preference */
+  color: #fff; /* White text */
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* Styling login link on hover */
+.login-link:hover {
+  background-color: #7099c4; /* Darker shade of blue on hover */
+}
+
+/* Footer */
+.footer {
+  background-color: #333; /* Footer background color */
+  color: #fff; /* Text color */
+  padding: 20px 0; /* Padding top and bottom */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer p {
+  margin-bottom: 0; /* Remove default bottom margin for paragraph */
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #f8f8ff;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border-radius: 7px;
+}
+
+form button {
+  margin-top: 15px;
+  background-color: #5575b0;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #6385c3;
+}
+
+.newB {
+  margin-top: 15px;
+  background-color: #5575b0;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.newB:hover {
+  background-color: #6385c3;
+  text-decoration: none;
+}
+
+label {
+  display: block; /* Display as block-level elements */
+  margin-bottom: 8px; /* Add space between labels */
+  font-size: 16px; /* Adjust font size */
+  color: #f8f8ff; /* Set text color */
+}
+#hotelForm {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#hotelForm {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.hotel-container {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.hotel-container h2 {
+  margin-top: 0;
+  font-size: 1.2em;
+}
+
+.hotel-info {
+  margin-top: 5px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#movieResultContainer {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  margin-bottom: 50px;
+  padding-bottom: 125px;
+}
+
+.movie-container {
+  text-align: center;
+}
+
+.movie-container h2 {
+  color: #333;
+}
+
+.movie-container p {
+  color: #666;
+  font-size: 18px;
+}
+
+#movieForm {
+  margin-top: 150px;
+}
+
+.movie-container img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.fleet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fleet-list li {
+  flex: 0 0 calc(33.33% - 20px); /* Each item takes 33.33% of the width with 20px spacing */
+  margin-right: 20px;
+  margin-bottom: 10px; /* Added margin bottom for spacing */
+}

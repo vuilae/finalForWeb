@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('same/head'); -%>
+  </head>
+  <body>
+    <%- include('same/nav'); -%>
+    <form
+      id="movieForm"
+      action="/airlines?lang=<%= currentLanguage %>"
+      method="post"
+    >
+      <h1><%= translation.airlineInfo %></h1>
+      <label for="airlineName"><%= translation.airlineName %>:</label>
+      <input
+        type="text"
+        id="airlineName"
+        name="airlineName"
+        placeholder="Ex: Turkish"
+      />
+      <button type="submit"><%= translation.airlineInfoButton %></button>
+    </form>
+
+    <div id="movieResultContainer">
+      <% if (airlines !== null) { %> <% airlines.forEach(airline => { %>
+      <div class="movie-container">
+        <h2><%= airline.name %></h2>
+        <p class="movie-info">
+          IATA: <%= airline.iata %>, ICAO: <%= airline.icao %>
+        </p>
+        <p class="movie-info">Fleet:</p>
+        <ul class="fleet-list">
+          <% for (let i = 0; i < Object.keys(airline.fleet).length; i += 3) { %>
+          <li>
+            <%= Object.keys(airline.fleet)[i] %>: <%=
+            airline.fleet[Object.keys(airline.fleet)[i]] %>
+          </li>
+          <% if (i + 1 < Object.keys(airline.fleet).length) { %>
+          <li>
+            <%= Object.keys(airline.fleet)[i + 1] %>: <%=
+            airline.fleet[Object.keys(airline.fleet)[i + 1]] %>
+          </li>
+          <% } %> <% if (i + 2 < Object.keys(airline.fleet).length) { %>
+          <li>
+            <%= Object.keys(airline.fleet)[i + 2] %>: <%=
+            airline.fleet[Object.keys(airline.fleet)[i + 2]] %>
+          </li>
+          <% } %> <% } %>
+          <li>Total: <%= airline.fleet.total %></li>
+        </ul>
+        <% if (airline.logo_url) { %>
+        <img src="<%= airline.logo_url %>" alt="Airline Logo" />
+        <% } %>
+      </div>
+      <% }); %> <% } %>
+    </div>
+    <div id="footer"><%- include('same/foot'); -%></div>
+
+  </body>
+</html>

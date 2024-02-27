@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/adminUser.css" />
+    <link rel="stylesheet" href="/styles/adminPost.css" />
+  </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+  </head>
+  <body>
+    <div id="navbar"><%- include('same/nav'); -%></div>
+
+    <div id="admin-content">
+      <h1><%= translation.adminPanel %><%= adminUsername%></h1>
+
+      <a class="atag" href="/admin/users?lang=<%= currentLanguage %>"><%= translation.editUser %></a>
+
+      <a class="atag" href="/admin/tours?lang=<%= currentLanguage %>"><%= translation.editPost %></a><br />
+    </div>
+
+    <div id="footer"><%- include('same/foot'); -%></div>
+  </body>
+</html>

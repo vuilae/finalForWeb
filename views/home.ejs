@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('same/head'); -%>
+  <body>
+    <%- include('same/nav'); -%>
+    <div class="container-fluid px-0">
+      <div class="content-container pb-5">
+        <main>
+          <h1>Welcome to My Travel Application</h1>
+          <h6>To access the functionality, please authorize.</h6>
+          <a class="login-link" href="/login?lang=<%= currentLanguage %>">Login</a>
+        </main>
+      </div>
+    </div>
+
+    <%- include('same/foot') %>
+  </body>
+</html>

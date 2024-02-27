@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('same/head'); -%>
+  <body>
+    <div id="navbar"><%- include('same/nav'); -%></div>
+    <div class="container">
+      <h1 style="text-align: center">Not allowed unless you are admin</h1>
+      <h1 style="text-align: center">
+        You can Login here <a href="/login?lang=<%= currentLanguage %>">Login</a>
+      </h1>
+    </div>
+
+    <div id="footer"><%- include('same/foot'); -%></div>
+  </body>
+</html>

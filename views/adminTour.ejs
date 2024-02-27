@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/adminUser.css" />
+  </head>
+  <body>
+    <%- include('same/nav'); -%>
+    <div class="adminContainer">
+      <h1><%= translation.adminPanel %><%= adminUsername%></h1>
+      <div class="create-post-form">
+        <h2><%= translation.createTour %></h2>
+        <form
+          action="/admin/tours/create?lang=<%= currentLanguage %>"
+          method="POST"
+          enctype="multipart/form-data"
+          class="tour-form"
+        >
+          <div class="form-group">
+            <label for="name"><%= translation.tourName %></label>
+            <input type="text" id="name" name="name" required />
+          </div>
+          <div class="form-group">
+            <label for="description"><%= translation.tourDescription %>:</label>
+            <textarea
+              id="description"
+              class="form-control"
+              name="description"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="country"><%= translation.tourCountry %>:</label>
+            <input type="text" id="country" name="country" required />
+          </div>
+          <div class="form-group">
+            <label for="city"><%= translation.tourCity %>:</label>
+            <input type="text" id="city" name="city" required />
+          </div>
+          <div class="form-group">
+            <label for="startDate"><%= translation.tourStart %>:</label>
+            <input type="date" id="startDate" name="startDate" required />
+          </div>
+          <div class="form-group">
+            <label for="endDate"><%= translation.tourEnd %>:</label>
+            <input type="date" id="endDate" name="endDate" required />
+          </div>
+          <div class="form-group">
+            <label for="rating"><%= translation.tourRating %>:</label>
+            <input type="number" id="rating" name="rating" required />
+          </div>
+          <div class="form-group">
+            <label for="numberOfPersons"><%= translation.tourPerson %>:</label>
+            <input
+              type="number"
+              id="numberOfPersons"
+              name="numberOfPersons"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="price"><%= translation.tourPrice %>:</label>
+            <input type="number" id="price" name="price" required />
+          </div>
+          <div class="form-group">
+            <label for="videoLink"
+              ><%= translation.tourVideo %>, Ex:
+              https://www.youtube.com/embed/QcGmpWx4DXQ?si=uUcKofBX2kpS05cN</label
+            >
+            <input type="text" id="videoLink" name="videoLink" required />
+          </div>
+          <div class="form-group">
+            <label for="addImage1">1:</label>
+            <input
+              type="file"
+              id="addImage1"
+              name="images[]"
+              accept="image/*"
+            />
+            <br />
+            <label for="addImage2">2:</label>
+            <input
+              type="file"
+              id="addImage2"
+              name="images[]"
+              accept="image/*"
+            />
+            <br />
+            <label for="addImage3">3:</label>
+            <input
+              type="file"
+              id="addImage3"
+              name="images[]"
+              accept="image/*"
+            />
+            <br />
+          </div>
+          <button type="submit"><%= translation.addTour %></button>
+        </form>
+      </div>
+      <br />
+      <% if (error) { %>
+      <p style="color: red; font-weight: bold; text-align: center">
+        <%= error %>
+      </p>
+      <% } else if (success) { %>
+      <p style="color: green; font-weight: bold; text-align: center">
+        <%= success %>
+      </p>
+      <% } %>
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th><%= translation.tour %></th>
+              <th><%= translation.edit %></th>
+              <th><%= translation.delete %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% posts.forEach(post => { %>
+            <tr style="border-bottom: 1px solid #ddd">
+              <td class="username"><%= post.name %></td>
+              <td>
+                <form
+                  method="POST"
+                  action="/admin/tours/<%= post._id %>?_method=PUT?lang=<%= currentLanguage %>"
+                >
+                  <div class="form-group">
+                    <label for="name"><%= translation.tourName %>:</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value="<%= post.name %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="description"><%= translation.tourDescription %>:</label>
+                    <textarea
+                      id="description"
+                      class="form-control"
+                      name="description"
+                    >
+<%= post.description %></textarea
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="country"><%= translation.tourCountry %>:</label>
+                    <input
+                      type="text"
+                      id="country"
+                      name="country"
+                      value="<%= post.country %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="city"><%= translation.tourCity %>:</label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      value="<%= post.city %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="startDate"><%= translation.tourStart %>:</label>
+                    <input
+                      type="date"
+                      id="startDate"
+                      name="startDate"
+                      value="<%= post.startDate %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="endDate"><%= translation.tourEnd %>:</label>
+                    <input
+                      type="date"
+                      id="endDate"
+                      name="endDate"
+                      value="<%= post.endDate %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="price"><%= translation.tourPrice %>:</label>
+                    <input
+                      type="number"
+                      id="price"
+                      name="price"
+                      value="<%= post.price %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="videoLink"><%= translation.tourVideo %>:</label>
+                    <input
+                      type="text"
+                      id="videoLink"
+                      name="videoLink"
+                      value="<%= post.videoLink %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="numberOfPersons"><%= translation.tourPerson %>:</label>
+                    <input
+                      type="number"
+                      id="numberOfPersons"
+                      name="numberOfPersons"
+                      value="<%= post.numberOfPersons %>"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="rating"><%= translation.tourRating %>:</label>
+                    <input
+                      type="number"
+                      id="rating"
+                      name="rating"
+                      value="<%= post.rating %>"
+                    />
+                  </div>
+                  <button type="submit"><%= translation.edit %></button>
+                </form>
+              </td>
+              <td>
+                <form
+                  method="POST"
+                  action="/admin/tours/<%= post._id %>?_method=DELETE?lang=<%= currentLanguage %>"
+                >
+                  <button type="submit"><%= translation.delete %></button>
+                </form>
+              </td>
+            </tr>
+            <br />
+            <% }) %>
+            <hr />
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <%- include('same/foot'); -%>
+  </body>
+</html>

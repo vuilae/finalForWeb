@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/styles/adminUser.css" />
+  </head>
+  <%- include('same/nav'); -%>
+    <div class="adminContainer">
+      <h1><%= translation.adminPanel %><%= adminUsername%></h1>
+      <div class="create-user-form">
+        <h2><%= translation.createUser %></h2>
+        <form method="POST" action="/admin/users/create?lang=<%= currentLanguage %>">
+          <label for="username"><%= translation.newUsername %>:</label>
+          <input type="text" name="username" />
+          <label for="username"><%= translation.newEmail %>:</label>
+          <input type="email" name="email"/>
+          <label for="username"><%= translation.newPassword %>:</label>
+          <input type="password" name="password" />
+          <button type="submit">Create User</button>
+        </form>
+      </div>
+      <% if (error) { %>
+      <p style="color: red; font-weight: bold; text-align: center">
+        <%= error %>
+      </p>
+      <% } else if (success) { %>
+      <p style="color: green; font-weight: bold; text-align: center">
+        <%= success %>
+      </p>
+      <% } %>
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th><%= translation.user %></th>
+              <th><%= translation.edit %></th>
+              <th><%= translation.delete %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(user => { %>
+            <tr style="border-bottom: 1px solid #ddd">
+              <td class="username"><%= user.username %></td>
+              <td>
+                <form
+                  method="POST"
+                  action="/admin/users/<%= user._id %>?_method=PUT?lang=<%= currentLanguage %>"
+                >
+                  <label for="username"><%= translation.username %>:</label>
+                  <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    value="<%= user.username %>"
+                  />
+
+                  <label for="email"><%= translation.email %>:</label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    value="<%= user.email %>"
+                  />
+
+                  <label for="password"><%= translation.password %>:</label>
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                  />
+
+                  <button type="submit"><%= translation.edit %></button>
+                </form>
+              </td>
+              <td>
+                <form
+                  method="POST"
+                  action="/admin/users/<%= user._id %>?_method=DELETE?lang=<%= currentLanguage %>"
+                >
+                  <button type="submit"><%= translation.delete %></button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+            <hr />
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <%- include('same/foot'); -%>
+  </body>
+</html>
