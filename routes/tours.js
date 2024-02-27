@@ -53,7 +53,7 @@ router.post("/booking/:id", async (req, res) => {
     });
     if (existingBooking) {
       return res.redirect(
-        `/tours/${tourId}/?error=You%20already%20booked%20for%20this%20tour`
+        `/tours/${tourId}/?error=You%20already%20booked%20for%20this%20tour&lang=${req.query.lang}`
       );
     }
 
@@ -64,7 +64,7 @@ router.post("/booking/:id", async (req, res) => {
 
     await newBooking.save();
 
-    res.redirect("/booked");
+    res.redirect(`/booked?lang=${req.query.lang}`);
   } catch (error) {
     console.error("Error booking tour:", error);
     res.status(500).json({ message: "Internal Server Error" });

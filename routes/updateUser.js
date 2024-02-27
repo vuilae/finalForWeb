@@ -19,11 +19,13 @@ async function getUser(req, res, next) {
   try {
     user = await User.findById(req.params.id);
     if (user == null) {
-      return res.redirect("/admin/users/?error=User not found");
+      return res.redirect(
+        `/admin/users/?error=User not found&lang=${req.query.lang}`
+      );
     }
   } catch (error) {
     return res.redirect(
-      "/admin/users/?error=" + encodeURIComponent(error.message)
+      `/admin/users/?error=" + encodeURIComponent(error.message)&lang=${req.query.lang}`
     );
   }
 
@@ -77,7 +79,7 @@ router.post("/create", async (req, res) => {
     if (existingUser) {
       // If user already exists, return an error message
       return res.redirect(
-        "/admin/users/?error=User with this username or email already exists"
+        `/admin/users/?error=User with this username or email already exists&lang=${req.query.lang}`
       );
     }
 
@@ -96,9 +98,15 @@ router.post("/create", async (req, res) => {
     // Save the new user to the database
     await newUser.save();
 
-    res.redirect("/admin/users/?success=User%20created%20successfully");
+    res.redirect(
+      `/admin/users/?success=User%20created%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
-    res.redirect(`/admin/users?error=${encodeURIComponent(error.message)}`);
+    res.redirect(
+      `/admin/users?error=${encodeURIComponent(error.message)}&lang=${
+        req.query.lang
+      }`
+    );
   }
 });
 
@@ -131,9 +139,15 @@ router.put("/:id", getUser, async (req, res) => {
     // Update the user using findByIdAndUpdate
     await User.findByIdAndUpdate(user._id, updateFields);
 
-    res.redirect("/admin/users/?success=User%20updated%20successfully");
+    res.redirect(
+      `/admin/users/?success=User%20updated%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
-    res.redirect(`/admin/users?error=${encodeURIComponent(error.message)}`);
+    res.redirect(
+      `/admin/users?error=${encodeURIComponent(error.message)}&lang=${
+        req.query.lang
+      }`
+    );
   }
 });
 
@@ -142,9 +156,15 @@ router.delete("/:id", getUser, async (req, res) => {
   try {
     const user = res.user; // User fetched by the getUser middleware
     await User.findByIdAndDelete(user._id);
-    res.redirect("/admin/users/?success=User%20deleted%20successfully");
+    res.redirect(
+      `/admin/users/?success=User%20deleted%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
-    res.redirect(`/admin/users?error=${encodeURIComponent(error.message)}`);
+    res.redirect(
+      `/admin/users?error=${encodeURIComponent(error.message)}&lang=${
+        req.query.lang
+      }`
+    );
   }
 });
 

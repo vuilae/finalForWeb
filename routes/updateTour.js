@@ -92,7 +92,9 @@ router.post("/create", upload.array("images[]"), async (req, res) => {
     });
     await newTour.save();
 
-    res.redirect("/admin/tours/?success=Post%20created%20successfully");
+    res.redirect(
+      `/admin/tours/?success=Post%20created%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
     console.error("Error adding tour:", error);
     res.status(500).send("Internal Server Error");
@@ -130,7 +132,9 @@ router.put("/:id", async (req, res) => {
       updatedAt: Date.now(),
     });
 
-    res.redirect("/admin/tours/?success=Post%20updated%20successfully");
+    res.redirect(
+      `/admin/tours/?success=Post%20updated%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
     console.error("Error editing post:", error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -143,9 +147,13 @@ router.delete("/:id", async (req, res) => {
   try {
     const deletedPost = await Tour.findByIdAndDelete(postId);
     if (!deletedPost) {
-      res.redirect("/admin/tours/?error=Post%20not%20found");
+      res.redirect(
+        `/admin/tours/?error=Post%20not%20found&lang=${req.query.lang}`
+      );
     }
-    res.redirect("/admin/tours/?success=Post%20deleted%20successfully");
+    res.redirect(
+      `/admin/tours/?success=Post%20deleted%20successfully&lang=${req.query.lang}`
+    );
   } catch (error) {
     console.error("Error deleting post:", error);
     res.status(500).json({ message: "Internal Server Error" });

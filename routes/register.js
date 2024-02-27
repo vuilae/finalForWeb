@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
       isAdmin,
     });
     await newUser.save();
-    res.redirect(`/login`);
+    res.redirect(`/login?lang=${req.query.lang}`);
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");

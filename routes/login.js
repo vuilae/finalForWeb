@@ -49,9 +49,9 @@ router.post("/", async (req, res) => {
 
   // Check if user is an admin
   if (user.isAdmin) {
-    res.redirect("/admin");
+    res.redirect(`/admin?lang=${req.query.lang}`);
   } else {
-    res.redirect("/tours");
+    res.redirect(`/tours?lang=${req.query.lang}`);
   }
 });
 
