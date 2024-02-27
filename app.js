@@ -106,7 +106,7 @@ app.use("/admin", authorizeAdmin, admin);
 app.use("/login", login);
 app.use("/register", register);
 app.use("/tours", tourRoutes);
-app.use("/hotels", hotelRoutes);
+app.use("/destinations", hotelRoutes);
 app.use("/booked", booked);
 app.use("/airlines", airlineRoutes);
 app.use("/change-language", changeLanguage);
