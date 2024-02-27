@@ -94,18 +94,20 @@ Users needs to authorize to access full functionalities. Used JSON Web Tokens (J
 - Password: darina123
 
 ## Usage
-get('/') - home route where user is redirected, if user is not authorized
-get('/admin') - page, where you can choose whether to edit tour or user
-get('/tours') - all tours displayed in this route
-get('/tours/:id') - details for specific tour, based on id
-post('/tours/booking/:id') - to book specific tour
-post('/login') - login route, where bcrypt is used for mathcing passwords
-post('/register') - bcrypt is used for hashing passwords
-post('/destinations') - results from destinations api with map 
-post('/airlines') - airlines results with logo
-post('/booked') - route for viewing what tours user booked
-get('/admin/users') - for CRUD user -> GET, PUT, DELETE, POST with id
-get('/admin/tours') - for CRUD tour -> GET, PUT, DELETE, POST with id
+1. get('/'): Home route where the user is redirected if they are not authorized.
+2. get('/admin'): Page where you can choose whether to edit a tour or a user.
+3. get('/tours'): Displays all tours.
+4. get('/tours/:id'): Displays details for a specific tour based on its id.
+5. post('/tours/booking/:id'): Used to book a specific tour.
+6. post('/login'): Route for user login where bcrypt is used to match passwords.
+7. post('/register'): Route for user registration where bcrypt is used to hash passwords.
+8. post('/destinations'): Displays results from the destinations API with a map.
+9. post('/airlines'): Displays airline results with logos.
+10. post('/booked'): Route for viewing the tours a user has booked.
+11. get('/admin/users'): CRUD operations for users, including GET, PUT, DELETE, and POST with an id.
+12. get('/admin/tours'): CRUD operations for tours, including GET, PUT, DELETE, and POST with an id.
+    Neglected some routes, because they are easy to navigate
+
 
 ## Contributing
 
