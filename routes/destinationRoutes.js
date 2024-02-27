@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
       url: "https://sky-scrapper.p.rapidapi.com/api/v1/hotels/searchDestinationOrHotel",
       params: { query: searchTerm },
       headers: {
-        "X-RapidAPI-Key": "fa63bda591mshddbd5d3726d27dep1702f7jsn6f6bd972cd7a",
+        "X-RapidAPI-Key": "89e2827136msh70a7f02277d9814p17ed93jsn7c06ac7d31d3",
         "X-RapidAPI-Host": "sky-scrapper.p.rapidapi.com",
       },
     };
