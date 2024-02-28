@@ -4,16 +4,18 @@ const router = express.Router();
 router.post("/", (req, res) => {
   const language = req.body.language;
   req.session.language = language;
+
+  // Get the referer URL
   var currentUrl = req.headers.referer || "/";
-  const langQueryParamIndex = currentUrl.indexOf("?lang=");
-  if (langQueryParamIndex !== -1) {
-    currentUrl =
-      currentUrl.substring(0, langQueryParamIndex) + `?lang=${language}`;
-  } else {
-    const separator = currentUrl.includes("?") ? "&" : "?";
-    currentUrl = `${currentUrl}${separator}lang=${language}`;
-  }
-  console.log(langQueryParamIndex, currentUrl);
+
+  // Remove any existing lang query parameter
+  currentUrl = currentUrl.replace(/[\?&]lang=[^&]+/, "");
+
+  // Add or update the lang query parameter with the new language value
+  const separator = currentUrl.includes("?") ? "&" : "?";
+  currentUrl = `${currentUrl}${separator}lang=${language}`;
+
+  console.log(currentUrl);
   res.redirect(currentUrl);
 });
 
