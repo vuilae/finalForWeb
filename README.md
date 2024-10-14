@@ -42,12 +42,6 @@ Discover tour booking experiences with my REST API-integrated platform. From bro
 - mongoose: ^8.1.3
 - multer: ^1.4.5-lts.1
 - nodemon: ^3.0.3
-
-## MongoDB:
-```bash
- mongodb+srv://vuilae:Aa102030@cluster0.jpwdrod.mongodb.net/?retryWrites=true&w=majority
-  ```
-
 ## Installation
 
 1. Clone the repository:
